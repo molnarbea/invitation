@@ -39,7 +39,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return $event;
     }
 
     /**
@@ -55,7 +55,9 @@ class EventController extends Controller
      */
     public function update(UpdateEventRequest $request, Event $event)
     {
-        //
+        $record = Event::findorFail($event->id);
+        $record->update($request->all());
+        return $record;
     }
 
     /**
@@ -63,6 +65,6 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        return $record = Event::destroy($event->id);
     }
 }

@@ -20,10 +20,9 @@ class EventFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'time' => fake()->dateTime(),
+            'time' => fake()->datetime(),
             'address' => fake()->address(),
             'trader_id' => Trader::all()->random()->id,
         ];
-        
     }
 }

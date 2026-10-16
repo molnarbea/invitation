@@ -13,7 +13,7 @@ class TraderController extends Controller
      */
     public function index()
     {
-        //
+        return Trader::all();
     }
 
     /**
@@ -29,7 +29,9 @@ class TraderController extends Controller
      */
     public function store(StoreTraderRequest $request)
     {
-        //
+        $record = new Trader();
+        $record->create($request->all());
+        return $record;
     }
 
     /**
@@ -37,7 +39,7 @@ class TraderController extends Controller
      */
     public function show(Trader $trader)
     {
-        //
+        return $trader;
     }
 
     /**
@@ -53,7 +55,9 @@ class TraderController extends Controller
      */
     public function update(UpdateTraderRequest $request, Trader $trader)
     {
-        //
+        $record = Trader::findorFail($trader->id);
+        $record->update($request->all());
+        return $record;
     }
 
     /**
@@ -61,6 +65,6 @@ class TraderController extends Controller
      */
     public function destroy(Trader $trader)
     {
-        //
+        return $record = Trader::destroy($trader->id);
     }
 }

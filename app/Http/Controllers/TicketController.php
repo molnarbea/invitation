@@ -13,7 +13,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        return Ticket::all();
     }
 
     /**
@@ -29,7 +29,9 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request)
     {
-        //
+        $record = new Ticket();
+        $record->create($request->all());
+        return $record;
     }
 
     /**
@@ -37,7 +39,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        return $ticket;
     }
 
     /**
@@ -53,7 +55,9 @@ class TicketController extends Controller
      */
     public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
-        //
+        $record = Ticket::findorFail($ticket->id);
+        $record->update($request->all());
+        return $record;
     }
 
     /**
@@ -61,6 +65,6 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        return $record = Ticket::destroy($ticket->id);
     }
 }
